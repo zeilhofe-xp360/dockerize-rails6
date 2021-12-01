@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - gem_cache:/gems
+    env_file:
+      - .env/development/database
+      - .env/development/web
+
+  redis:
+    image: redis
+
+  memcached:
+    image: memcached
+
+  database:
+    image: postgres
+    env_file:
+      - .env/development/database
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    
+volumes:
+  db_data:
+  gem_cache:
+  
