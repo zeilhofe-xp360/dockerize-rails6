@@ -4,6 +4,7 @@ LABEL maintainer="rudi.zeilhofer@xp360.de"
 
 # install the latest nodejs
 RUN apt-get update -yqq && apt-get install -yqq --no-install-recommends \
+  iputils-ping \
   nodejs \
   telnet \
   yarn
